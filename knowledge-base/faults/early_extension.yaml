@@ -1,0 +1,114 @@
+id: early_extension
+name: Early Extension
+tier: A
+view: DTL
+description: >
+  The pelvis moves toward the ball-target line during the downswing rather than
+  maintaining the address hip-hinge. The backside comes off the seat-line it held
+  at address. One of the most common faults in amateur golfers and one of the
+  clearest to see on camera.
+
+why_it_matters: >
+  Early extension forces the arms to re-route away from the body to avoid a
+  collision, typically producing a blocked shot right or a flip/hook as the
+  hands try to rescue at impact. Power is lost because the lower body moves
+  past the ball rather than rotating around a stable center. Associated with
+  lower-back compression under load.
+
+detection:
+  keypoints: [LEFT_HIP, RIGHT_HIP]
+  p_positions_inspected: [1, 4, 7]
+  trigger: "pelvis midpoint X-displacement toward camera > 0.10 * S between P4 and P7 (DTL view)"
+  severity_formula: "(displacement - threshold) / S"
+
+root_cause_branches:
+  - id: ankle_hip_mobility
+    rank: 1
+    description: >
+      Limited ankle dorsiflexion or hip internal rotation means the body cannot
+      maintain the hip-hinge posture under downswing load. The path of least
+      resistance is to stand up. The most common root cause in amateur golfers.
+      A deep-squat screen confirms it.
+    physical_screen: true
+    screen_ids: [deep_squat_screen, hip_hinge_screen]
+    how_to_tell: >
+      If you fail the deep-squat screen (heels rise, torso collapses forward,
+      knees cave inward), this branch is likely. Fix mobility before drilling
+      technique — technique drills won't stick if the body physically can't hold
+      the position.
+
+  - id: arm_stuck
+    rank: 2
+    description: >
+      The arms get trapped too far behind the body at transition. The pelvis
+      thrusts forward to make room for the club rather than rotating around a
+      stable center.
+    physical_screen: false
+    how_to_tell: >
+      If you tend to hit blocks and pushes with no flip instinct, and the
+      early extension appears suddenly at P5 rather than gradually through
+      the downswing, this branch is more likely.
+
+  - id: loss_of_posture_cofire
+    rank: 3
+    description: >
+      Loss of posture (spine angle changing from P1 baseline) often co-occurs.
+      The pelvis thrust may be a compensation for the spine standing up first.
+      The two faults share a root cause and should be addressed together.
+    physical_screen: false
+    how_to_tell: >
+      Check the spine angle at P6. If it has also changed significantly from
+      the P1 baseline, address both faults together — they likely share a cause.
+
+drills:
+  - id: chair_drill
+    name: Chair / Seat Drill
+    description: >
+      Place a chair behind you at address so the seat just touches your backside.
+      Make swings while keeping light contact with the seat through the downswing
+      and into impact. The moment you thrust the hips forward you leave the chair.
+      Start with slow rehearsal swings, then build to full speed.
+    primary_cue: "Seat stays in contact through impact"
+
+  - id: wall_seat_drill
+    name: Wall Seat Drill
+    description: >
+      Stand with your backside just touching a wall at address. Same principle as
+      the chair drill but with instant tactile feedback from a fixed surface.
+      Useful at home between practice sessions.
+    primary_cue: "Wall stays at your back"
+
+feels:
+  - id: seat_stays_back_feel
+    description: >
+      The feeling of your backside 'sitting back' through impact — as if you are
+      keeping a tray on your lower back level throughout the downswing. The hips
+      rotate around a stable center rather than thrusting toward the ball.
+
+screens:
+  - id: deep_squat_screen
+    name: Deep Squat Screen
+    description: >
+      Stand with feet shoulder-width apart, toes slightly flared. Clasp hands
+      overhead. Squat until thighs are parallel to the ground. Check: do heels
+      rise? Does torso collapse forward? Do knees cave inward? Any yes suggests
+      limited ankle or hip mobility contributing to early extension.
+    pass_criteria: "Heels flat, torso upright, knees tracking over toes at depth"
+
+  - id: hip_hinge_screen
+    name: Hip Hinge Screen
+    description: >
+      Stand with feet hip-width apart. Hinge forward from the hips (not the waist)
+      while maintaining a flat back until you feel a hamstring stretch. Can you hold
+      a flat back at a 45-degree forward lean without excessive knee bend?
+    pass_criteria: "Flat back, hip crease clearly behind the heels"
+
+theory:
+  - id: early_extension_theory
+    content: >
+      In the kinematic chain, the lower body initiates the downswing by rotating
+      and clearing. Early extension substitutes linear (toward-ball) thrust for
+      rotational clearance. The hands arrive at impact too far from the body,
+      requiring either a block or a flip rescue. The geometric correction is to
+      keep the pelvis rotating around its P1 position rather than thrusting toward
+      the target. Rotation continues; only the linear thrust is removed.

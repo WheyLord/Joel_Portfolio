@@ -1,0 +1,65 @@
+id: over_the_top
+name: Over the Top / Steep Shaft
+tier: B
+view: DTL
+description: >
+  The hands move outward toward the ball-target line at transition rather than
+  dropping down and in. The club approaches impact from outside the target line.
+  The most common cause of the pull-slice pattern.
+
+note: >
+  Tier B fault — requires standardised DTL camera placement. Use hand-path-relative
+  method (downswing path vs backswing path) rather than an absolute plane line;
+  it degrades more gracefully with imperfect camera setup.
+
+detection:
+  keypoints: [LEFT_WRIST, RIGHT_WRIST]
+  p_positions_inspected: [4, 5, 6]
+  trigger: "downswing hand path outside backswing hand path by > 0.08 * S"
+
+root_cause_branches:
+  - id: open_clubface
+    rank: 1
+    description: >
+      An open clubface at the top causes the brain to throw the club outward
+      instinctively to square the face at impact. The over-the-top path is the
+      symptom; the open face is the cause. Fix the face and the path often
+      self-corrects.
+    physical_screen: false
+    how_to_tell: >
+      If you produce a pull-slice (starts left, curves right), this is almost
+      certainly the root. If the wrist-cupping proxy also fired, prioritise this
+      branch.
+
+  - id: weak_grip
+    rank: 2
+    description: >
+      A weak grip (V's pointing toward the lead shoulder) makes it nearly
+      impossible to square the face from an inside path, reinforcing the
+      cast-outside pattern to compensate.
+    physical_screen: false
+
+  - id: upper_body_sequencing
+    rank: 3
+    description: >
+      The shoulders initiate the downswing before the hips have cleared,
+      throwing the club outside-in. A sequencing issue rather than a face issue.
+    physical_screen: false
+    how_to_tell: >
+      If ball flight is a pull (straight left) rather than a slice, sequencing
+      is more likely than face/grip as the root cause.
+
+  - id: thoracic_mobility
+    rank: 4
+    description: >
+      Limited thoracic rotation restricts the backswing turn, producing a
+      steeper plane that leads directly to a steeper downswing.
+    physical_screen: true
+    screen_ids: [thoracic_rotation_screen]
+
+  - id: intent_steering
+    rank: 5
+    description: >
+      Consciously aiming or steering the club at the target causes the upper
+      body to take over and cast the club outside.
+    physical_screen: false
