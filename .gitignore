@@ -1,0 +1,37 @@
+# Android
+*.apk
+*.ap_
+*.dex
+*.class
+*.aar
+local.properties
+.idea/
+.gradle/
+android/build/
+android/app/build/
+android/*/build/
+*.iml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+dist/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+*.ipynb_checkpoints
+
+# Backend
+backend/.env
+backend/__pycache__/
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# IDEs
+*.swp
+*.swo
